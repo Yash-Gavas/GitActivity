@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issued Books</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Issued Books</h1>
+        </header>
+
+        <ul>
+            {% if issued_books %}
+                {% for title, usn in issued_books.items() %}
+                    <li>{{ title }} (Issued to USN: {{ usn }})</li>
+                {% endfor %}
+            {% else %}
+                <li>No books have been issued yet.</li>
+            {% endif %}
+        </ul>
+        
+    </div>
+</body>
+</html>

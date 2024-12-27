@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Library Management System</h1>
+        </header>
+        
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <form method="GET" action="{{ url_for('index') }}">
+                <input type="text" name="search" placeholder="Search for a book" value="{{ search_query }}">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <h2>Manage Books</h2>
+        <form method="POST" action="{{ url_for('add_book') }}">
+            <div class="input-group">
+                <label for="title">Book Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="input-group">
+                <label for="author">Author Name:</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+            <button type="submit" class="btn add-btn">Add Book</button>
+        </form>
+
+        <h3>Books List:</h3>
+        <ul>
+            {% for book in books %}
+                <li>{{ book['Title'] }} by {{ book['Author'] }}
+                    <form method="POST" action="{{ url_for('delete_book', title=book['Title']) }}" style="display:inline;">
+                        <button type="submit" class="btn delete-btn">Delete</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <a href="{{ url_for('issued_books') }}" class="btn">View Issued Books</a>
+        <a href="{{ url_for('issue_book') }}" class="btn">Issue Book</a>
+    </div>
+</body>
+</html>
