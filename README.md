@@ -39,13 +39,15 @@ cd library-management-system
 ## Screenshots
 
 ### Home Page
-![Home Page](screenshots/home-page.png)
+![Screenshot 2024-12-27 130708](https://github.com/user-attachments/assets/46f91966-fef0-4114-91a6-fe08a2fe63b1)
+
 
 ### Issue Book
-![Issue Book](screenshots/issue-book.png)
+![Screenshot 2024-12-27 131736](https://github.com/user-attachments/assets/452088f2-b64a-4d08-8c77-1e751f6a8c6a)
+
 
 ### Issued Books
-![Issued Books](screenshots/issued-books.png)
+
 
 ---
 
