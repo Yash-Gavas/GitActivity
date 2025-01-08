@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overdue Books</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Overdue Books</h1>
+        </header>
+
+        <ul>
+            {% if notifications %}
+                {% for notification in notifications %}
+                    <li>{{ notification }}</li>
+                {% endfor %}
+            {% else %}
+                <li>No overdue books at the moment.</li>
+            {% endif %}
+        </ul>
+    </div>
+</body>
+</html>
