@@ -75,3 +75,50 @@ ul li {
 .delete-btn:hover {
     background-color: #c82333;
 }
+
+/* New button styles for the three separate buttons */
+.btn-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Specific button styles */
+.issued-books-btn {
+    background-color: #4CAF50; /* Green */
+}
+
+.issued-books-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.issue-book-btn {
+    background-color: #008CBA; /* Blue */
+}
+
+.issue-book-btn:hover {
+    background-color: #007B9E; /* Darker blue on hover */
+}
+
+.overdue-books-btn {
+    background-color: #f44336; /* Red */
+}
+
+.overdue-books-btn:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}

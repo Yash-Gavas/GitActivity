@@ -44,8 +44,16 @@
             {% endfor %}
         </ul>
 
-        <a href="{{ url_for('issued_books') }}" class="btn">View Issued Books</a>
-        <a href="{{ url_for('issue_book') }}" class="btn">Issue Book</a>
+        <!-- Separate Buttons for Each URL -->
+        <div class="btn-container">
+            <a href="{{ url_for('issued_books') }}" class="btn issued-books-btn">View Issued Books</a>
+        </div>
+        <div class="btn-container">
+            <a href="{{ url_for('issue_book') }}" class="btn issue-book-btn">Issue Book</a>
+        </div>
+        <div class="btn-container">
+            <a href="{{ url_for('overdue_books') }}" class="btn overdue-books-btn">View Overdue Books</a>
+        </div>
     </div>
 </body>
 </html>

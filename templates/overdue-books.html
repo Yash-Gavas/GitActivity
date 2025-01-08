@@ -11,16 +11,22 @@
         <header>
             <h1>📚 Overdue Books</h1>
         </header>
-
-        <ul>
-            {% if notifications %}
-                {% for notification in notifications %}
-                    <li>{{ notification }}</li>
+        
+        {% if overdue_books %}
+            <h2>Overdue Books:</h2>
+            <ul>
+                {% for book in overdue_books %}
+                    <li>
+                        <strong>{{ book.title }}</strong> (Issued to: {{ book.usn }})
+                        <br>Due Date: {{ book.due_date }}
+                    </li>
                 {% endfor %}
-            {% else %}
-                <li>No overdue books at the moment.</li>
-            {% endif %}
-        </ul>
+            </ul>
+        {% else %}
+            <p>No overdue books at the moment.</p>
+        {% endif %}
+        
+        <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
     </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import json
 import os
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
@@ -28,17 +29,32 @@ class Library:
             if book["Title"].lower() == title.lower():
                 if title in self.issued_books:
                     return "Book already issued."
-                self.issued_books[title] = usn
+                # Set the due date as 60 days from now
+                due_date = (datetime.now() + timedelta(days=60)).strftime('%Y-%m-%d')
+                self.issued_books[title] = {"usn": usn, "due_date": due_date}
                 self.save_data()
                 return "Book issued successfully."
         return "Book not found."
 
+
+    
     def return_book(self, title):
         if title in self.issued_books:
             del self.issued_books[title]
             self.save_data()
             return "Book returned successfully."
         return "Book was not issued."
+    
+    def check_overdue_books(self):
+        overdue_books = []
+        current_date = datetime.now().strftime('%Y-%m-%d')  # Current date as string
+        for title, data in self.issued_books.items():
+            if isinstance(data, dict) and "due_date" in data:  # Ensure data is a dictionary and has 'due_date'
+                due_date = data["due_date"]
+                if due_date < current_date:
+                    overdue_books.append({"title": title, "usn": data["usn"], "due_date": due_date})
+        return overdue_books
+
 
     def save_data(self):
         if not os.path.exists("data"):
@@ -109,6 +125,10 @@ def issued_books():
         app.logger.error(f"Error displaying issued books: {e}")
         return "An error occurred while displaying issued books", 500
 
+@app.route('/overdue-books')
+def overdue_books():
+    overdue_books = library.check_overdue_books()
+    return render_template('overdue-books.html', overdue_books=overdue_books)
 
 
 
