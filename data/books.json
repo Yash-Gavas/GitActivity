@@ -1,23 +1,21 @@
 {
     "books": [
-      {"Title": "The Great Gatsby", "Author": "F. Scott Fitzgerald"},
-      {"Title": "1984", "Author": "George Orwell"},
-      {"Title": "To Kill a Mockingbird", "Author": "Harper Lee"},
-      {"Title": "Pride and Prejudice", "Author": "Jane Austen"},
-      {"Title": "Moby-Dick", "Author": "Herman Melville"},
-      {"Title": "War and Peace", "Author": "Leo Tolstoy"},
-      {"Title": "The Catcher in the Rye", "Author": "J.D. Salinger"},
-      {"Title": "The Odyssey", "Author": "Homer"},
-      {"Title": "Crime and Punishment", "Author": "Fyodor Dostoevsky"},
-      {"Title": "The Picture of Dorian Gray", "Author": "Oscar Wilde"},
-      {"Title": "Brave New World", "Author": "Aldous Huxley"},
-      {"Title": "The Lord of the Rings", "Author": "J.R.R. Tolkien"},
-      {"Title": "Frankenstein", "Author": "Mary Shelley"},
-      {"Title": "The Divine Comedy", "Author": "Dante Alighieri"},
-      {"Title": "Don Quixote", "Author": "Miguel de Cervantes"},
-      {"Title": "The Hobbit", "Author": "J.R.R. Tolkien"},
-      {"Title": "Fahrenheit 451", "Author": "Ray Bradbury"},
-      {"Title": "Catch-22", "Author": "Joseph Heller"},
-      {"Title": "The Chronicles of Narnia", "Author": "C.S. Lewis"}
-    ]
-  , "issued_books": {"The Great Gatsby": "USN1234", "1984": "usn35"}}
+        {
+            "Title": "Select Book",
+            "Author": ""
+        },
+        {
+            "Title": "The Great Gatsby", 
+            "Author": "F. Scott Fitzgerald"
+        }, 
+        {
+            "Title": "1984", 
+            "Author": "George Orwell"
+        }
+    ], 
+    
+    "issued_books": {
+        "The Great Gatsby": "USN1234",
+         "1984": "usn35"
+        }
+    }
