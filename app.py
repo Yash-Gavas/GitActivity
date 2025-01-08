@@ -98,7 +98,8 @@ def issue_book():
 def return_book():
     title = request.form['return-title']
     result = library.return_book(title)
-    return redirect(url_for('index'))
+    return render_template('issue-book.html', result=result, books=library.books)
+
 
 @app.route('/issued-books')
 def issued_books():

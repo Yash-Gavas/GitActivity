@@ -9,9 +9,10 @@
 <body>
     <div class="container">
         <header>
-            <h1>📚 Issue a Book</h1>
+            <h1>📚 Issue or Return a Book</h1>
         </header>
 
+        <!-- Issue Book Form -->
         <form method="POST" action="{{ url_for('issue_book') }}">
             <label for="issue-title">Book Title:</label>
             <select id="issue-title" name="issue-title">
@@ -24,6 +25,18 @@
             <input type="text" id="usn" name="usn" required>
 
             <button type="submit">Issue</button>
+        </form>
+
+        <!-- Return Book Form -->
+        <form method="POST" action="{{ url_for('return_book') }}">
+            <label for="return-title">Book Title to Return:</label>
+            <select id="return-title" name="return-title">
+                {% for book in books %}
+                    <option value="{{ book.Title }}">{{ book.Title }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Return</button>
         </form>
 
         {% if result %}
