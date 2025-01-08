@@ -65,6 +65,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Author
 Developed by **[Yash Gavas](https://github.com/Yash-Gavas)**.
-Prathviraj,Jeevan ,Prajwal 
+Prathviraj,Jeevan ,Prajwal, Sanket 
 
 
