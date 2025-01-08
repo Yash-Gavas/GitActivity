@@ -60,8 +60,6 @@ class Library:
             self.books = []
             self.issued_books = {}
 
-
-
 library = Library()
 
 @app.route('/')
@@ -84,6 +82,7 @@ def delete_book(title):
 
 @app.route('/issue-book', methods=['GET', 'POST'])
 def issue_book():
+    result = None
     if request.method == 'POST':
         title = request.form.get('issue-title', '').strip()
         usn = request.form.get('usn', '').strip()
@@ -91,8 +90,7 @@ def issue_book():
             result = "Invalid input. Please provide both Title and USN."
         else:
             result = library.issue_book(title, usn)
-        return render_template('issue-book.html', result=result, books=library.books)
-    return render_template('issue-book.html', books=library.books)
+    return render_template('issue-book.html', result=result, books=library.books)
 
 @app.route('/return-book', methods=['POST'])
 def return_book():
@@ -103,14 +101,18 @@ def return_book():
 @app.route('/issued-books')
 def issued_books():
     try:
-        app.logger.debug(f"Issued books data: {library.issued_books}")
-        return render_template('issued-books.html', issued_books=library.issued_books)
+        issued_books_list = library.issued_books
+        if not issued_books_list:  # If no books are issued
+            app.logger.warning("No issued books found.")
+            return render_template('no_issued_books.html')
+        return render_template('issued_books.html', issued_books=issued_books_list)
+    
+    except AttributeError as e:
+        app.logger.error(f"AttributeError: {e} - Could not access issued_books.")
+        return render_template('error.html', message="Failed to load issued books. Please try again later."), 500
     except Exception as e:
         app.logger.error(f"Error displaying issued books: {e}")
-        return "An error occurred while displaying issued books", 500
-
-
-
+        return render_template('error.html', message="An unexpected error occurred."), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
